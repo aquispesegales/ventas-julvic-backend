@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66ca7343889332c2b8ecca11c251430c",
+    "content-hash": "c3063420434ffa2824cd53934c02f370",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3936,20 +3936,20 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "df4c4d08a639be4ef5d6d1322868f9e477553679"
+                "reference": "67d472b1794c986381a8950e4958e1adb779d561"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/df4c4d08a639be4ef5d6d1322868f9e477553679",
-                "reference": "df4c4d08a639be4ef5d6d1322868f9e477553679",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/67d472b1794c986381a8950e4958e1adb779d561",
+                "reference": "67d472b1794c986381a8950e4958e1adb779d561",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9",
+                "php": "^5.3.9 || ^7.0 || ^8.0",
                 "symfony/polyfill-ctype": "^1.9"
             },
             "require-dev": {
@@ -3978,9 +3978,14 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "homepage": "https://gjcampbell.co.uk/"
+                },
+                {
                     "name": "Vance Lucas",
                     "email": "vance@vancelucas.com",
-                    "homepage": "http://www.vancelucas.com"
+                    "homepage": "https://vancelucas.com/"
                 }
             ],
             "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
@@ -3991,11 +3996,15 @@
             ],
             "funding": [
                 {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-12T15:11:38+00:00"
+            "time": "2020-05-02T13:38:00+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -4342,6 +4351,50 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "heroku/heroku-buildpack-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heroku/heroku-buildpack-php.git",
+                "reference": "c08cb15cec11259635051d2d8a3f238370f63afb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/c08cb15cec11259635051d2d8a3f238370f63afb",
+                "reference": "c08cb15cec11259635051d2d8a3f238370f63afb",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/heroku-hhvm-apache2",
+                "bin/heroku-hhvm-nginx",
+                "bin/heroku-php-apache2",
+                "bin/heroku-php-nginx"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Zuelke",
+                    "email": "dz@heroku.com"
+                }
+            ],
+            "description": "Toolkit for starting a PHP application locally, with or without foreman, using the same config for PHP/HHVM and Apache2/Nginx as on Heroku",
+            "homepage": "https://github.com/heroku/heroku-buildpack-php",
+            "keywords": [
+                "apache",
+                "apache2",
+                "foreman",
+                "heroku",
+                "hhvm",
+                "nginx",
+                "php"
+            ],
+            "time": "2020-04-30T21:19:39+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -5826,7 +5879,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "heroku/heroku-buildpack-php": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
