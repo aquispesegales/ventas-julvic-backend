@@ -110,7 +110,11 @@ class ProductoController extends Controller
     }
     
     public function obtener_todos(){
-        $productos = Producto::all();
+        //$productos = Producto::all();
+       
+
+        $productos = Producto::with('categoria')->get();
+
 
         $data = array(
             'status'=>'success',

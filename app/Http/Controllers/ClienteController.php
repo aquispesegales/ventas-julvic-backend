@@ -14,6 +14,7 @@ class ClienteController extends Controller
         $validate = \Validator::make($request->all(),[
             'nombre'=> 'required',
             'direccion'=> 'required',
+            'nit_ci'=> 'required',
             'telefono'=> 'required',
             'correo'=> 'email',
         ]);
@@ -28,6 +29,7 @@ class ClienteController extends Controller
             //si validacione s correcta procedemos a insertar a bd
             $cliente = new Cliente();
             $cliente->nombre = $request->input('nombre');
+            $cliente->nit_ci = $request->input('nit_ci');
             $cliente->apellido_pat = $request->input('apellido_pat');
             $cliente->apellido_mat = $request->input('apellido_mat');
             $cliente->correo = $request->input('correo');
@@ -54,6 +56,7 @@ class ClienteController extends Controller
         //validar datos enviados
         $validate = \Validator::make($request->all(),[
             'nombre'=> 'required',
+            'nit_ci'=> 'required',
             'direccion'=> 'required',
             'telefono'=> 'required',
             'correo'=> 'email',
@@ -69,6 +72,7 @@ class ClienteController extends Controller
 
             $cliente = Cliente::find($id);
             $cliente->nombre = $request->input('nombre');
+            $cliente->nit_ci = $request->input('nit_ci');
             $cliente->apellido_pat = $request->input('apellido_pat');
             $cliente->apellido_mat = $request->input('apellido_mat');
             $cliente->correo = $request->input('correo');
@@ -118,5 +122,30 @@ class ClienteController extends Controller
 
         return response()->json($data,$data['code']);
 
+    }
+
+    public function buscar_cliente_by_nitci($nit_ci){
+         //buscar el registro
+      
+        
+         $cliente = Cliente::where("nit_ci","=",$nit_ci)->find(1);
+        if($cliente!=null){
+            $data = array(
+                'status'=>'success',
+                'code'=>200,
+                'message'=>'Cliente encontrado correctamente',
+                'cliente'=>$cliente
+            );
+    
+        }else{
+            $data = array(
+                'status'=>'success',
+                'code'=>400,
+                'message'=>'Cliente encontrado correctamente',
+                'cliente'=>$cliente
+            );
+        }
+     
+        return response()->json($data,$data['code']);
     }
 }

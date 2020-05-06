@@ -10,7 +10,8 @@ class VentaCab extends Model
 
     //una vecnta cabeceera puede tener muchas ventas detalle
     public function VentasDet(){
-        return $this->hasMany('App\VentaDet');
+        return $this->hasMany('App\VentaDet','venta_cab_id','venta_cab_id');
+
     }
 
     //muchas ventas detalle peude tener un cliente

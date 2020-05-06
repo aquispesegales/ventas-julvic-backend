@@ -33,10 +33,22 @@ Route::post('/api/cliente/registrar', 'ClienteController@registrar');
 Route::put('/api/cliente/actualizar/{id}', 'ClienteController@actualizar');
 Route::delete('/api/cliente/eliminar/{id}', 'ClienteController@eliminar');
 Route::get('/api/cliente/obtener-todos', 'ClienteController@obtener_todos');
+Route::get('/api/cliente/buscar-cliente-por-nitci/{nit_ci}', 'ClienteController@buscar_cliente_by_nitci');
+
 
 //Rutas de Productos
 Route::post('/api/producto/registrar', 'ProductoController@registrar');
 Route::put('/api/producto/actualizar/{id}', 'ProductoController@actualizar');
 Route::delete('/api/producto/eliminar/{id}', 'ProductoController@eliminar');
 Route::get('/api/producto/obtener-todos', 'ProductoController@obtener_todos');
+
+//rutas para ventas cabecera
+Route::post('/api/venta-cab/registrar', 'VentaCabController@registrar');
+Route::get('/api/venta-cab/ventas-realizadas', 'VentaCabController@obtenerVentasRelizadas');
+
+
+//rutas para ventasdetalle
+Route::post('/api/venta-det/registrar', 'VentaDetController@registrar');
+
+
 
