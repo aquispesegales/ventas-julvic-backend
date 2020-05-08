@@ -50,5 +50,15 @@ Route::get('/api/venta-cab/ventas-realizadas', 'VentaCabController@obtenerVentas
 //rutas para ventasdetalle
 Route::post('/api/venta-det/registrar', 'VentaDetController@registrar');
 
+//rutas para Usuarios
+Route::post('/api/usuario/registrar', 'UsuarioController@registrar');
+Route::put('/api/usuario/actualizar/{id}', 'UsuarioController@actualizar');
+Route::delete('/api/usuario/eliminar/{id}', 'UsuarioController@eliminar');
+Route::get('/api/usuario/obtener-todos', 'UsuarioController@obtener_todos');
+
+Route::post('/api/usuario/autenticar', 'UsuarioController@autenticar');
+
+
+
 
 
