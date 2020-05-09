@@ -124,6 +124,9 @@ class UsuarioController extends Controller
     }
 
     public function autenticar(Request $request){
+
+
+
         $validate = \Validator::make($request->all(),[
             'usuario_pc'=> 'required',
             'ci'=> 'required',
@@ -136,7 +139,15 @@ class UsuarioController extends Controller
                 'message'=>$validate->errors()
             );
         }else{
-
+            $usuario = Usuario::where('usuario_pc','=',$request->input('usuario_pc'))
+                                ->where('ci','=',$request->input('ci'))
+                                ->get();
+            $data = array('status'=>'success',
+                          'code'=>200,
+                          'message'=>'Autenticacion correcta',
+                          'usuario'=>$usuario
+                        );
         }
+        return response()->json($data,$data['code']);
     }
 }
