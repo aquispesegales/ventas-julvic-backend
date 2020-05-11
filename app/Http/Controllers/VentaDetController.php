@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\VentaDet;
+use App\Producto;
 
 class VentaDetController extends Controller
 {
@@ -11,13 +12,19 @@ class VentaDetController extends Controller
         
     
         foreach( $request->all() as $key=>$item){
-           $venta_det = new VentaDet();
-           $venta_det->venta_cab_id = $item['venta_cab_id'];
-           $venta_det->producto_id = $item['producto_id'];
-           $venta_det->cantidad = $item['cantidad'];
-           $venta_det->fecha_registro = new \DateTime();
-           $venta_det->estado_id = 1000;
-           $venta_det->save();
+            $venta_det = new VentaDet();
+            $venta_det->venta_cab_id = $item['venta_cab_id'];
+            $venta_det->producto_id = $item['producto_id'];
+            $venta_det->cantidad = $item['cantidad'];
+            $venta_det->fecha_registro = new \DateTime();
+            $venta_det->estado_id = 1000;
+            $venta_det->save();
+
+            //actualizando stock en productos
+            $producto = Producto::find($venta_det->producto_id);
+            $producto->stock =  $producto->stock - $venta_det->cantidad;
+            $producto->save();
+
         }
 
         $data = array(
