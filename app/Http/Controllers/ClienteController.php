@@ -13,10 +13,9 @@ class ClienteController extends Controller
         //validar datos enviados
         $validate = \Validator::make($request->all(),[
             'nombre'=> 'required',
-            'direccion'=> 'required',
-            'nit_ci'=> 'required',
-            'telefono'=> 'required',
-            'correo'=> 'email',
+            'apellido_pat'=> 'required',
+            'apellido_mat'=> 'required',
+            'nit_ci'=> 'required'
         ]);
 
         if($validate->fails()){
@@ -48,7 +47,7 @@ class ClienteController extends Controller
         }
 
         //respuesta
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
      
     }
 
@@ -56,10 +55,9 @@ class ClienteController extends Controller
         //validar datos enviados
         $validate = \Validator::make($request->all(),[
             'nombre'=> 'required',
-            'nit_ci'=> 'required',
-            'direccion'=> 'required',
-            'telefono'=> 'required',
-            'correo'=> 'email',
+            'apellido_pat'=> 'required',
+            'apellido_mat'=> 'required',
+            'nit_ci'=> 'required'
         ]);
 
         if($validate->fails()){
@@ -89,7 +87,7 @@ class ClienteController extends Controller
         }
 
         //respuesta
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
     }
 
     public function eliminar ($id){
@@ -146,6 +144,6 @@ class ClienteController extends Controller
             );
         }
      
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
     }
 }

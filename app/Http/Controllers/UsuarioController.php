@@ -13,8 +13,6 @@ class UsuarioController extends Controller
         $validate = \Validator::make($request->all(),[
             'ci'=> 'required',
             'nombre'=> 'required',
-            'apellido_pat'=> 'required',
-            'apellido_mat'=> 'required',
             'usuario_pc'=> 'required'
         ]);
 
@@ -46,7 +44,7 @@ class UsuarioController extends Controller
         }
 
         //respuesta
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
      
     }
 
@@ -56,8 +54,6 @@ class UsuarioController extends Controller
         $validate = \Validator::make($request->all(),[
             'ci'=> 'required',
             'nombre'=> 'required',
-            'apellido_pat'=> 'required',
-            'apellido_mat'=> 'required',
             'usuario_pc'=> 'required'
         ]);
 
@@ -87,7 +83,7 @@ class UsuarioController extends Controller
         }
 
         //respuesta
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
     }
 
     public function eliminar ($id){
@@ -142,12 +138,22 @@ class UsuarioController extends Controller
             $usuario = Usuario::where('usuario_pc','=',$request->input('usuario_pc'))
                                 ->where('ci','=',$request->input('ci'))
                                 ->get();
-            $data = array('status'=>'success',
-                          'code'=>200,
-                          'message'=>'Autenticacion correcta',
-                          'usuario'=>$usuario
-                        );
+            if(count($usuario)>0){
+                $data = array('status'=>'success',
+                'code'=>200,
+                'message'=>'Autenticacion correcta',
+                'usuario'=>$usuario
+              );
+            }else{
+                $data = array('status'=>'success',
+                'code'=>400,
+                'message'=>'Usuario No Existe',
+                'usuario'=>$usuario
+              );
+            }
+
+            
         }
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
     }
 }
