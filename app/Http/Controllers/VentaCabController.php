@@ -29,6 +29,7 @@ class VentaCabController extends Controller
             $venta_cab->nit_ci = $request->input('nit_ci');
             $venta_cab->cliente_id = $request->input('cliente_id');
             $venta_cab->fecha_registro = new \DateTime();
+            $venta_cab->con_factura = $request->input('con_factura');
             $venta_cab->estado_id = 1000;
             $venta_cab->save();
  
@@ -41,7 +42,7 @@ class VentaCabController extends Controller
         }
 
         //respuesta
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
      
     }
 

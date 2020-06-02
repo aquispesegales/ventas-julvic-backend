@@ -14,7 +14,6 @@ class ProductoController extends Controller
             'nombre'=> 'required',
             'descripcion'=> 'required',
             'precio'=> 'required',
-            'stock'=> 'required',
             'categoria_id'=>'required'
         ]);
 
@@ -32,6 +31,7 @@ class ProductoController extends Controller
             $producto->descripcion = $request->input('descripcion');
             $producto->precio = $request->input('precio');
             $producto->stock = $request->input('stock');
+            $producto->stock_almacen = $request->input('stock_almacen');
             $producto->categoria_id = $request->input('categoria_id');
            
 
@@ -48,7 +48,7 @@ class ProductoController extends Controller
         }
 
         //respuesta
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
      
     }
 
@@ -59,7 +59,6 @@ class ProductoController extends Controller
             'nombre'=> 'required',
             'descripcion'=> 'required',
             'precio'=> 'required',
-            'stock'=> 'required',
             'categoria_id'=>'required'
         ]);
 
@@ -76,6 +75,7 @@ class ProductoController extends Controller
             $producto->descripcion = $request->input('descripcion');
             $producto->precio = $request->input('precio');
             $producto->stock = $request->input('stock');
+            $producto->stock_almacen = $request->input('stock_almacen');
             $producto->categoria_id = $request->input('categoria_id');
             $producto->fecha_modificacion = new \DateTime();
             $producto->save();
@@ -88,7 +88,7 @@ class ProductoController extends Controller
         }
 
         //respuesta
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
     }
 
     public function eliminar ($id){
@@ -105,7 +105,7 @@ class ProductoController extends Controller
             'message'=>'Eliminacion   PRODUCTO Correcta',
             'producto'=>$producto
         );
-        return response()->json($data,$data['code']);
+        return response()->json($data,200);
 
     }
     
