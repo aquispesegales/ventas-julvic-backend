@@ -31,7 +31,7 @@ class ProductoController extends Controller
             $producto->descripcion = $request->input('descripcion');
             $producto->precio = $request->input('precio');
             $producto->stock = $request->input('stock');
-            $producto->stock_almacen = $request->input('stock_almacen');
+            $producto->stock_almacen = number_format($request->input('stock_almacen')) - number_format($request->input('stock'));
             $producto->categoria_id = $request->input('categoria_id');
            
 

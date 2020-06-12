@@ -125,22 +125,27 @@ class ClienteController extends Controller
     public function buscar_cliente_by_nitci($nit_ci){
          //buscar el registro
       
-        
-         $cliente = Cliente::where("nit_ci","=",$nit_ci)->find(1);
-        if($cliente!=null){
+        /*echo $nit_ci;
+        die();*/
+         
+       
+
+         $cliente = Cliente::where('nit_ci', $nit_ci)->get();
+
+         
+        if($cliente!=null && count($cliente)>0){
             $data = array(
                 'status'=>'success',
                 'code'=>200,
                 'message'=>'Cliente encontrado correctamente',
-                'cliente'=>$cliente
+                'cliente'=>$cliente[0]
             );
     
         }else{
             $data = array(
                 'status'=>'success',
                 'code'=>400,
-                'message'=>'Cliente encontrado correctamente',
-                'cliente'=>$cliente
+                'message'=>'Cliente NO correctamente',
             );
         }
      
