@@ -7,6 +7,11 @@ use App\Producto;
 
 class ProductoController extends Controller
 {
+    public function todos_chat(Request $request){
+        echo "Hola Vatos Locos";
+        die();
+    }
+
     public function registrar(Request $request){
         //validar datos enviados
 

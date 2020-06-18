@@ -59,6 +59,9 @@ Route::get('/api/usuario/obtener-todos', 'UsuarioController@obtener_todos');
 Route::post('/api/usuario/autenticar', 'UsuarioController@autenticar');
 
 
+//rupa post para chat bot
+Route::post('/api/producto/todos_chat', 'ProductoController@todos_chat');
+
 
 
 
